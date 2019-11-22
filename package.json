@@ -91,7 +91,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kenwheeler/nuka-carousel.git"
+    "url": "https://github.com/ljndev/nuka-carousel.git"
+  },
+  "publishConfig": {
+    "registry":"https://npm.lajavaness.com/"
   },
   "keywords": [
     "react",
@@ -101,8 +104,8 @@
   "author": "Ken Wheeler",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FormidableLabs/nuka-carousel/issues"
+    "url": "https://github.com/ljndev/nuka-carousel/issues"
   },
-  "homepage": "https://github.com/FormidableLabs/nuka-carousel",
+  "homepage": "https://github.com/ljndev/nuka-carousel",
   "sideEffects": false
 }
