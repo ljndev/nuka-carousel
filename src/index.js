@@ -531,9 +531,26 @@ export default class Carousel extends React.Component {
       dragging: false
     });
   }
+
+  activeElementIsWithinSwiper() {
+    let node = document.activeElement.parentNode;
+    while (node !== null) {
+      if (node === this.rootContainer) {
+        return true;
+      }
+      node = node.parentNode;
+    }
+    return false;
+  }
+
   // eslint-disable-next-line complexity
   handleKeyPress(e) {
-    if (this.props.enableKeyboardControls) {
+    // rootContainer
+    if (
+      this.props.enableKeyboardControls === 'always' ||
+      (this.props.enableKeyboardControls === 'focused' &&
+        this.activeElementIsWithinSwiper())
+    ) {
       switch (e.keyCode) {
         case 39:
         case 68:
@@ -1054,6 +1071,7 @@ export default class Carousel extends React.Component {
     return (
       <div
         className={['slider', this.props.className || ''].join(' ').trim()}
+        ref={rootContainer => (this.rootContainer = rootContainer)}
         style={Object.assign(
           {},
           getSliderStyles(this.props.width, this.props.height),
@@ -1160,7 +1178,7 @@ Carousel.propTypes = {
   beforeSlide: PropTypes.func,
   cellAlign: PropTypes.oneOf(['left', 'center', 'right']),
   cellSpacing: PropTypes.number,
-  enableKeyboardControls: PropTypes.bool,
+  enableKeyboardControls: PropTypes.oneOf(['never', 'focused', 'always']),
   disableAnimation: PropTypes.bool,
   disableEdgeSwiping: PropTypes.bool,
   dragging: PropTypes.bool,
@@ -1213,7 +1231,7 @@ Carousel.defaultProps = {
   beforeSlide() {},
   cellAlign: 'left',
   cellSpacing: 0,
-  enableKeyboardControls: false,
+  enableKeyboardControls: 'never',
   disableAnimation: false,
   disableEdgeSwiping: false,
   dragging: true,

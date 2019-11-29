@@ -62,7 +62,7 @@ Or on CodeSandBox at the following url: <a href="https://codesandbox.io/s/04wxlo
 | E key                      | Last slide                                          |
 | SpaceBar                   | When `autoplay={true}` pauses and unpauses carousel |
 
-- Keyboard shortcuts are disabled as a default. To enable them set `enableKeyboardControls` prop to `true`.
+- Keyboard shortcuts are disabled as a default. To enable them set `enableKeyboardControls` prop to `always` if you want them to work on the whole Web page, or `focused` for them to work only when the carousel is focused.
 
 ### Props
 
